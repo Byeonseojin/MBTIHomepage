@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Redirecting Page</title>
+  <style>
+    body {
+      background-color: rgb(255, 255, 255);
+      background-image: url(/assets/main_mbti.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    h1 {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      color: rgb(87, 87, 87);
+      transform: translate(-50%, -50%);
+      font-size: 70px;
+    }
+
+    .bounce-animation span {
+      display: inline-block;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: rgb(87, 87, 87);
+      color: white;
+      font-size: 24px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .button:hover {
+      background-color: rgb(70, 70, 70);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+<a th:href="@{/homepage/main}">
+  <h1 class="bounce-animation">
+    <span>서</span>
+    <span>진</span>
+    <span>이</span>
+    <span>의</span>
+    <span> </span>
+    <span>m</span>
+    <span>b</span>
+    <span>t</span>
+    <span>i</span>
+  </h1>
+  <div class="button">클릭해주세요</div>
+</a>
+</body>
+</html>

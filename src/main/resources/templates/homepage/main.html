@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>main.mbti</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+            background-image: url(/assets/main_mbti.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .header {
+            color: rgb(55, 55, 55);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        a {
+            color: rgb(255, 255, 255);
+            font-size: 27px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            color: rgb(255, 195, 238);
+            text-decoration: none;  /* 추가된 부분 */
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            flex-grow: 0.5;
+        }
+        .box {
+            width: 44%;
+            height: 210px;
+            background-color: rgba(120, 220, 185, 0.578);
+            margin: 5px 10px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        .box:hover {
+            transform: scale(1.05);
+        }
+        .box1 {
+            width: 60%;
+            height: 80px;
+            background-color: rgba(120, 220, 185, 0.578);
+            margin: 20px auto;
+        }
+        .box2 {
+            background-color: rgba(248, 121, 163, 0.678);
+            margin-right: 100px;
+        }
+        .box3 {
+            background-color: rgba(79, 159, 250, 0.594);
+        }
+        .box4 {
+            background-color: rgba(157, 108, 248, 0.612);
+            margin-right: 100px;
+        }
+        .box5 {
+            background-color: rgba(255, 199, 102, 0.705);
+        }
+        .box6 {
+            background-color: rgba(255, 141, 141, 0.7);
+        }
+
+        .box p:hover {
+            color: rgb(255, 0, 0);
+        }
+
+        .auth-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .auth-buttons .btn {
+            padding: 8px 20px;
+            font-size: 16px;
+            border-radius: 20px;
+        }
+
+        .btn-login {
+            background-color: rgba(248, 121, 163, 0.678);
+            border: none;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background-color: rgba(248, 121, 163, 0.9);
+            color: white;
+            text-decoration: none;  /* 추가된 부분 */
+        }
+
+        .btn-logout {
+            background-color: rgba(157, 108, 248, 0.612);
+            border: none;
+            color: white;
+        }
+
+        .btn-logout:hover {
+            background-color: rgba(157, 108, 248, 0.9);
+            color: white;
+            text-decoration: none;  /* 추가된 부분 */
+        }
+
+        @media screen and (max-width: 768px) {
+            .box {
+                width: 90%;
+                height: 150px;
+            }
+            .box1 {
+                width: 80%;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .box {
+                width: 90%;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1 class="header">서진이의 'MBTI' 정보소</h1> <!-- 제목은 최상단에 위치 -->
+<hr>
+<div class="container">
+    <div class="box box1">
+        <p><a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">MBTI 성격유형 검사 링크</a></p>
+    </div>
+    <div class="box box2">
+        <p><a th:href="@{/homepage/mbti01}">MBTI 성격유형</a></p>
+    </div>
+    <div class="box box3">
+        <p><a th:href="@{/homepage/mbti02}">MBTI 16가지 유형</a></p>
+    </div>
+    <div class="box box4">
+        <p><a th:href="@{/homepage/mbti03}">MBTI 미니테스트</a></p>
+    </div>
+    <div class="box box5">
+        <p><a th:href="@{../notice/list}">공지사항</a></p>
+    </div>
+    <div class="box box6">
+        <div sec:authorize="isAuthenticated()">
+            <p><a th:href="@{../community/list}">커뮤니티</a></p>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+            <p><a href="/login" onclick="alert('로그인이 필요한 서비스입니다.');">커뮤니티</a></p>
+        </div>
+    </div>
+</div>
+<div class="auth-buttons">
+    <div sec:authorize="!isAuthenticated()">
+        <a href="/login" class="btn btn-login">로그인</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-logout">로그아웃</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

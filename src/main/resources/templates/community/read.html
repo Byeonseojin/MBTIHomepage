@@ -1,0 +1,372 @@
+  <!DOCTYPE html>
+  <html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" content="${_csrf.token}" />
+    <meta name="_csrf_header" content="${_csrf.headerName}" />
+    <title>Read Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      /* 페이지의 내용을 중앙에 정렬하기 위한 CSS */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;  /* center에서 flex-start로 변경 */
+        min-height: 100vh;  /* height를 min-height로 변경 */
+        background-color: #f8f9fa;
+        padding: 20px 0;  /* 상하 여백 추가 */
+      }
+
+      .container {
+        max-width: 600px;
+        width: 100%;
+        padding: 20px;
+        background-color: rgba(204, 225, 245, 0.32);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;  /* 여백 추가 */
+        height: auto;  /* 높이 자동 조절 */
+        min-height: min-content;  /* 최소 높이 설정 */
+      }
+      .form-control:read-only {
+        background-color: rgba(204, 225, 245, 0.32) !important;
+      }
+      .btn-modify{
+        background-color: #bcd9ff !important;
+        border-color: #bcd9ff !important;
+        color: white !important;
+      }
+      .btn-list{
+        background-color: white !important;
+        border-color: white !important;
+        color: #bcd9ff !important;
+      }
+      /* 댓글 카드 스타일 추가 */
+      .card-body {
+        background-color: rgba(204, 225, 245, 0.32);  /* 연한 핑크 배경색 */
+        margin-bottom: 10px;
+        padding: 15px !important;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.2s ease;
+      }
+
+      .card-body:hover {
+        background-color: rgba(204, 225, 245, 0.32);  /* 호버 시 약간 진한 핑크 */
+        cursor: pointer;
+      }
+
+      .card-subtitle {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+
+      .card-text {
+        color: #888;
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+      }
+
+      .card-title {
+        color: #333;
+        margin-top: 8px;
+        font-size: 1rem;
+      }
+      /* 댓글 버튼 스타일 추가 */
+      .reply-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .btn-reply {
+        background-color: white !important;
+        border: 1px solid #bcd9ff !important;
+        color: #bcd9ff !important;
+        padding: 5px 15px !important;
+        border-radius: 20px !important;
+        font-size: 0.9rem !important;
+        transition: all 0.2s ease;
+      }
+
+      .btn-reply:hover {
+        background-color: #bcd9ff !important;
+        color: white !important;
+        cursor: pointer;
+      }
+
+      .badge.result-item {
+        padding: 8px 15px !important;
+        font-weight: normal !important;
+        font-size: 0.9rem !important;
+      }
+      /* 스크롤바 스타일링 (선택사항) */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #bcd9ff;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a6b2ff;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="container">
+    <th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+      <th:block th:fragment="content">
+        <h1 class="mt-4">커뮤니티</h1>
+        <!-- name 속성이 중요합니다. 이 속성들이 DTO의 필드와 매핑됩니다 -->
+        <div class="form-group">
+          <label>NO</label>
+          <input type="text" name="bno" class="form-control" th:value="${dto.bno}" readonly>
+        </div>
+        <div class="form-group">
+          <label>제목</label>
+          <input type="text" name="title" class="form-control" th:value="${dto.title}" readonly>
+        </div>
+        <div class="form-group">
+          <label>내용</label>
+          <textarea name="content" class="form-control" rows="5" readonly>[[${dto.content}]]</textarea>
+        </div>
+        <div class="form-group">
+          <label>작성자</label>
+          <input type="text" name="writer" class="form-control" th:value="${dto.writerName}" readonly>
+        </div>
+        <div class="form-group">
+          <label>작성시간</label>
+          <input type="text" name="regDate" class="form-control" th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+        </div>
+        <div class="form-group">
+          <label>수정시간:</label>
+          <input type="text" name="modDate" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+        </div>
+        <div th:with="writer=${dto.writerEmail}">
+          <a th:if="${#authentication.principal.username == writer or #authorization.expression('hasRole(''ADMIN'')')}"
+             th:href="@{/community/modify(bno=${dto.bno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword=${requestDTO.keyword})}">
+            <button type="button" class="btn btn-primary form-group btn-modify">수정</button>
+          </a>
+        </div>
+        <a th:href="@{/community/list(page=${requestDTO.page}, type=${requestDTO.type}, keyword=${requestDTO.keyword})}">
+          <button type="button" class="btn btn-info form-group btn-list">목록</button>
+        </a>
+
+        <div class="mt-4">
+          <button type="button" class="btn btn-reply addReply">
+            댓글추가
+          </button>
+          <button type="button" class="btn btn-reply replyCount">
+            댓글열기
+          </button>
+        </div>
+        <div class="list-group replyList">
+        </div>
+      </th:block>
+    </th:block>
+  </div>
+  <!-- Start modal-->
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&nbsp;&nbsp;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input class="form-control" type="text" name="replyText" placeholder="댓글을 입력하세요">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="replyer" th:value="${#authentication.principal.username}" readonly>
+            <input type="hidden" name="rno">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger replyRemove">삭제</button>
+          <button type="button" class="btn btn-info replyModify">수정</button>
+          <button type="button" class="btn btn-primary replySave">저장</button>
+          <button type="button" class="btn btn-outline-secondary replyClose" data-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Modal-->
+  </body>
+  <script th:inline="javascript">
+    $(document).ready(function (){
+      var bno = [[${dto.bno}]];
+      var currentUser = [[${#authentication.principal.username}]];
+      var listGroup = $(".replyList");
+
+      // 날짜형식에 맞춰서 문자열로 반환하는 메소드
+      function formatTime(dateStr){
+        var dateObj = new Date(dateStr);
+        var result = dateObj.getFullYear() + '/';
+        result += (dateObj.getMonth() + 1) + '/';
+        result += dateObj.getDate() + '/';
+        result += dateObj.getHours() + ':'
+        result += dateObj.getMinutes();
+
+        return result;
+      }
+
+      // 특정 게시글의 댓글 처리
+      function loadJSONData(){
+        $.getJSON('/replies/community/'+bno, function (arr){
+          var htmlStr = "";
+
+          $('.replyCount').html(" 댓글" + arr.length);
+
+          $.each(arr, function (idx, reply){
+            console.log(reply);
+            htmlStr += '<div class="card-body" data-rno="'+reply.rno+'" data-replyer="'+reply.replyer+'">';
+            htmlStr += '<h5 class="card-subtitle">'+reply.replyer+'</h5>'
+            htmlStr += '<p class="card-text">'+ formatTime(reply.regDate)+'</p>'
+            htmlStr += '<h4 class="card-title">'+reply.text+'</h4>'
+            htmlStr += '</div>'
+          })
+          listGroup.html(htmlStr);
+        })
+      }
+
+      $(".replyCount").click(function () {
+        $.getJSON('/replies/community/' + bno, function (jsonArr) {
+          console.log(jsonArr)
+          loadJSONData();
+        })
+      });
+
+      // 모달창
+      var modal = $('.modal');
+      $(".addReply").click(function () {
+        modal.show();
+        // 입력된 값이 있을 때 초기화
+        $('input[name="replyText"]').val('');
+        $('input[name="replyer"]').val(currentUser);  // 현재 사용자 이메일로 설정
+
+        $(".modal-footer .btn").hide();
+        $(".replySave, .replyClose").show();
+      })
+
+      // 모달창 닫기
+      $(".btn-close, .replyClose").click(function (){
+        modal.hide();
+      })
+
+      // 댓글추가 기능 실행
+      $(".replySave").click(function (){
+        var reply = {
+          bno: bno,
+          text: $('input[name="replyText"]').val(),
+          replyer: $('input[name="replyer"]').val()
+        }
+        $.ajax({
+          url: '/replies/',
+          method: 'post',
+          data: JSON.stringify(reply),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          success: function(data){
+            var newRno = parseInt(data);
+            alert(newRno + "번 댓글이 정상 등록되었습니다.")
+            modal.hide();
+            loadJSONData();
+          }
+        });
+      });
+
+      // 댓글 목록을 클릭했을 때 모달창이 보이게 설정
+      $(".replyList").on("click", ".card-body", function (){
+        var rno = $(this).data("rno");
+        var replyer = $(this).data("replyer");
+
+        // 현재 사용자와 댓글 작성자가 다르면 수정/삭제 버튼을 숨김
+        if(currentUser !== replyer) {
+          alert("자신의 댓글만 수정/삭제할 수 있습니다.");
+          return;
+        }
+
+        $("input[name='replyText']").val($(this).find('.card-title').html());
+        $("input[name='replyer']").val(replyer);
+        $("input[name='rno']").val(rno);
+
+        $(".modal-footer .btn").hide();
+        $(".replyRemove, .replyModify, .replyClose").show();
+
+        modal.show();
+      })
+
+      // 댓글 삭제 기능 실행
+      $(".replyRemove").click(function () {
+        var rno = $("input[name='rno']").val();
+        var replyer = $("input[name='replyer']").val();
+
+        if(currentUser !== replyer) {
+          alert("자신의 댓글만 삭제할 수 있습니다.");
+          return;
+        }
+
+        $.ajax({
+          url: '/replies/' + rno,
+          method: 'delete',
+          success: function(result){
+            console.log("* result: " + result);
+            if (result === 'success'){
+              alert("댓글이 삭제되었습니다.");
+              modal.hide();
+              loadJSONData();
+            }
+          }
+        });
+      });
+
+      // 댓글 수정 기능 실행
+      $(".replyModify").click(function (){
+        var rno = $("input[name='rno']").val();
+        var replyer = $("input[name='replyer']").val();
+
+        if(currentUser !== replyer) {
+          alert("자신의 댓글만 수정할 수 있습니다.");
+          return;
+        }
+
+        var reply = {
+          rno: rno,
+          bno: bno,
+          text: $('input[name="replyText"]').val(),
+          replyer: replyer
+        }
+
+        console.log(reply);
+        $.ajax({
+          url: '/replies/' + rno,
+          method: 'put',
+          data: JSON.stringify(reply),
+          contentType: 'application/json; charset=utf-8',
+          success: function(result){
+            console.log("* result: " + result);
+            if (result === 'success'){
+              alert("댓글이 수정되었습니다.");
+              modal.hide();
+              loadJSONData();
+            }
+          }
+        })
+      })
+    });
+  </script>
+  </html>

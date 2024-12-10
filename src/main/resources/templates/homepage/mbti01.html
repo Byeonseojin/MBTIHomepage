@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>mbti01</title>
+    <style>
+        body {
+            background-image: url(/assets/01mbti_title.png);
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: 100% 100px;
+            background-color: rgba(255, 209, 252, 0.441);
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        hr {
+            border-style: solid;
+            border-width: 4px;
+            border-color: rgba(253, 202, 250, 0.546);
+        }
+        .click {
+            color: rgb(246, 122, 140);
+            text-align: center;
+            font-size: 35px;
+            border-radius: 30px;
+        }
+        .font_big {
+            font-size: 100px;
+        }
+        .font_bold {
+            font-weight: bold;
+        }
+        .font_center {
+            text-align: center;
+        }
+        .font_none {
+            text-decoration: none;
+        }
+        .button {
+            display: inline-flex;
+            width: 220px;
+            height: 200px;
+            color: rgb(255, 255, 255);
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            justify-content: center;
+            align-items: center;
+            margin: 36px;
+        }
+        .button1 { background-color: #25f1cf; }
+        .button2 { background-color: #ff5a5a; }
+        .button3 { background-color: #cc6cff; }
+        .button4 { background-color: #aaff6d; }
+        .button5 { background-color: #ffaf5a; }
+        .button6 { background-color: #f872fa; }
+        .button7 { background-color: #4ac9ff; }
+        .button8 { background-color: #fff959; }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<h1 class="click">버튼을 클릭하세요! Please click these buttons!</h1>
+<hr>
+<div class="container">
+    <div class="row">
+        <a th:href="@{/mbti01_accessory/01_E}" class="button button1 font_big font_bold font_center font_none">E</a>
+        <a th:href="@{/mbti01_accessory/01_S}" class="button button2 font_big font_bold font_center font_none">S</a>
+        <a th:href="@{/mbti01_accessory/01_T}" class="button button3 font_big font_bold font_center font_none">T</a>
+        <a th:href="@{/mbti01_accessory/01_J}" class="button button4 font_big font_bold font_center font_none">J</a>
+    </div>
+    <div class="row">
+        <a th:href="@{/mbti01_accessory/01_I}" class="button button5 font_big font_bold font_center font_none">I</a>
+        <a th:href="@{/mbti01_accessory/01_N}" class="button button6 font_big font_bold font_center font_none">N</a>
+        <a th:href="@{/mbti01_accessory/01_F}" class="button button7 font_big font_bold font_center font_none">F</a>
+        <a th:href="@{/mbti01_accessory/01_P}" class="button button8 font_big font_bold font_center font_none">P</a>
+    </div>
+</div>
+</body>
+</html>

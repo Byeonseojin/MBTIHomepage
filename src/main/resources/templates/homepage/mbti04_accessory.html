@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>mbti04.accessory</title>
+    <style>
+        #b{
+			width:50% ;
+			height: 50%;
+			margin:100px auto;
+			border-color: rgb(224, 224, 224);
+			background-color: white;
+		}
+		body{
+			background-color: rgba(146, 210, 255, 0.226) ;
+		}
+    </style>
+</head>
+<body>
+    <form>
+		<fieldset id="b">
+			<legend align="center">회원가입</legend>
+			<table>
+			<tr>
+				<td><label>⦁ 이름 <input type="text" id="text" name="" placeholder=""></label></td>
+			</tr>
+			<tr>
+				<td><label>⦁ 닉네임 <input type="text" id="text2" name="text2" placeholder=""></label></td>
+			</tr>
+			<tr>
+				<td><label for="password">⦁ 비밀번호 <input type="password" id="password" name="password" placeholder=""></label></td>
+			</tr>
+			</table>
+			<tr>
+			<table>
+			<td>⦁ 휴대폰</td>
+			<td> 
+				<select>
+					<optgroup>
+						<option>010</option>
+						<option>02</option>
+					</optgroup>
+				</select>
+				-
+				<input type="text" name="number" id="phone1">
+				-
+				<input type="text" name="number" id="phone2">
+			</td>
+			</tr>
+			</table>
+			<table>
+				<td>⦁ 이메일</td>
+				<td> 
+					<input type="text" name="email" id="email"> @
+					<select>
+						<optgroup>
+							<option>naver.com</option>
+							<option>gmail.com</option>
+						</optgroup>
+					</select>
+				</td>
+				</tr>
+				</table>
+			<table>
+				<hr>
+				<td>⦁ 엠비티아이</td>
+				<tr>
+					<td><input type="radio"  name="mbti">E</td>
+					<td><input type="radio"  name="mbti">I</td>
+				</tr>
+				<tr>
+					<td><input type="radio"  name="mbti2">S</td>
+					<td><input type="radio"  name="mbti2">N</td>
+				</tr>
+				<tr>
+					<td><input type="radio"  name="mbti3">T</td>
+					<td><input type="radio"  name="mbti3">F</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="mbti4">J</td>
+					<td><input type="radio"  name="mbti4">P</td>
+				</tr>
+			</table>
+			<hr>
+			<table> 
+				<tr>-가입 문자를 간략하게 적어주세요!-</tr>
+				<tr>
+					<td><textarea name="extra" id="extra" cols="80" rows="5"></textarea></td>
+				</tr>          
+				<tr>
+                	<td><input type="submit" id="submit" name=""></td>
+            	</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>

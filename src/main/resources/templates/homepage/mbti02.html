@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>mbti02</title>
+    <style>
+        body{
+            color: rgb(255, 192, 218);
+            background-color: rgba(255, 168, 230, 0.215);
+        }
+        .text_dec{
+            text-decoration: none;
+            color: palevioletred;
+        }
+        .text_dec:hover{
+            color:plum;
+        }
+        hr{
+            border-color: rgb(245, 166, 206);
+        }
+        .sixteen{
+            width:40% ;
+            height: 20% ;
+            margin:40px 390px ;
+            text-align: center;
+            background-color: rgba(169, 163, 254, 0.518);
+            color: rgb(255, 255, 255);
+            border-radius: 10px;
+        }
+        .mbti1> h1{
+            width: 80px;
+            color: white ;
+            background-color: rgba(145, 170, 253, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti2> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(250, 148, 220, 0.683);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti3> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(255, 231, 73, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti4> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(114, 100, 236, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti5> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(228, 95, 170, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti6> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(49, 189, 112, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti7> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(255, 102, 68, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti8> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(90, 116, 230, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti9> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(255, 78, 110, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti10> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(184, 227, 83, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti11> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(255, 94, 58, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti12> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(255, 123, 204, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti13> h1{
+            width: 70px;
+            color: white ;
+            background-color:rgba(255, 219, 9, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti14> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(255, 95, 95, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti15> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(0, 136, 255, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        .mbti16> h1{
+            width: 70px;
+            color: white ;
+            background-color: rgba(249, 241, 92, 0.717);
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .mbti1> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(120, 151, 253, 0.201);
+            border-radius: 5px;
+        }
+        .mbti2> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(250, 148, 219, 0.201);
+            border-radius: 5px;
+        }
+        .mbti3> p{
+            width: 100%;    
+            color: rgb(62, 62, 62);        
+            background-color: rgba(236, 241, 92, 0.363);
+            border-radius: 5px;
+        }
+        .mbti4> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(114, 100, 236, 0.285);
+            border-radius: 5px;
+        }
+        .mbti5> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(228, 95, 170, 0.285);
+            border-radius: 5px;
+        }
+        .mbti6> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(49, 189, 112, 0.285);
+            border-radius: 5px;
+        }
+        .mbti7> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(255, 102, 68, 0.285);
+            border-radius: 5px;
+        }
+        .mbti8> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(90, 116, 230, 0.285);
+            border-radius: 5px;
+        }
+        .mbti9> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(255, 78, 110, 0.285);
+            border-radius: 5px;
+        }
+        .mbti10> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(184, 227, 83, 0.363);
+            border-radius: 5px;
+        }
+        .mbti11> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(255, 94, 58, 0.285);;
+            border-radius: 5px;
+        }
+        .mbti12> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(255, 123, 204, 0.285);
+            border-radius: 5px;
+        }
+        .mbti13> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(255, 219, 90, 0.363);
+            border-radius: 5px;
+        }
+        .mbti14> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(255, 95, 95, 0.285);
+            border-radius: 5px;
+        }
+        .mbti15> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(0, 136, 255, 0.285);
+            border-radius: 5px;
+        }
+        .mbti16> p{
+            width: 100%;
+            color: rgb(62, 62, 62);
+            background-color: rgba(249, 241, 92, 0.363);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="sixteen">16가지 엠비티아이</h1><hr>
+    <a href="#istj" class="text_dec">ISTJ</a>ㅣ
+    <a href="#isfj" class="text_dec">ISFJ</a>ㅣ
+    <a href="#infj" class="text_dec">INFJ</a>ㅣ
+    <a href="#intj" class="text_dec">INTJ</a>ㅣ
+    <a href="#istp" class="text_dec">ISTP</a>ㅣ
+    <a href="#isfp" class="text_dec">ISFP</a>ㅣ
+    <a href="#infp" class="text_dec">INFP</a>ㅣ
+    <a href="#intp" class="text_dec">INTP</a>ㅣ
+    <a href="#estp" class="text_dec">ESTP</a>ㅣ
+    <a href="#esfp" class="text_dec">ESFP</a>ㅣ
+    <a href="#enfp" class="text_dec">ENFP</a>ㅣ
+    <a href="#estp" class="text_dec">ESTP</a>ㅣ
+    <a href="#estj" class="text_dec">ESTJ</a>ㅣ
+    <a href="#esfj" class="text_dec">ESFJ</a>ㅣ
+    <a href="#enfj" class="text_dec">ENFJ</a>ㅣ
+    <a href="#entj" class="text_dec">ENTJ</a>ㅣ
+    <hr>
+    <div class="mbti1">
+        <h1 id="istj">ISTJ</h1>
+        <p>ISTJ는 실제 사실에 대하여 정확하고 체계적으로 기억하며 일 처리에 있어서도 신중하고 책임감이 있다. 집중력이 강한 현실 감각을 지녔으며 조직적이고 침착하다. 보수적인 경향이 있으며, 문제를 해결하는데 과거의 경험을 잘 적용하며, 반복되는 일상적인 일에 대한 인내력이 강하다. 3차기능인 Fi(내향 감정)로 인해 자신과 타인의 감정과 기분을 이해하는 능력이 부족하며, 4차기능이 Ne(외향 직관)로 나무보다 숲을 보는 직관 능력이 매우 부족하여 전체적이고 타협적 방안을 고려하는 노력이 필요하다. 정확성과 조직력을 발휘하는 분야의 일을 선호한다.        다소 내향적이지만 틀에 짜여진 사회에서 주어진 임무를 철저하게 완수하려 노력하며 규칙을 잘 준수하는 유형이라 회사나 공공기관 근무를 선호하고 일반적인 학교 선생님들이 매우 좋아하는 유형이다. 겉으로 튀는 것을 별로 안 좋아하고 용의단정하며 정돈된 스타일이다.</p></div>
+    <div class="mbti2">
+        <h1 id="isfj">ISFJ</h1>
+        <p>ISFJ 유형 성격의 소유자는 조용하고 차분하며 따뜻하고 친근하다. 책임감과 인내력 또한 매우 강하다. 본인의 친한 친구나 가족에게 애정이 가득하다. 이들은 언제나 진솔하려 노력하고 가볍지 않기 때문에 관계를 맺기에 가장 어려우나 가장 믿음직스러운 유형이다.
+            사회생활 시 외부 환경에 대해 내향형 중에서 가장 방어력이 강하다. 상대방의 감정을 파악하는 데는 능숙하지만 표현하는 데는 서툴기 때문에 관계에 있어서 걱정을 하는 경우가 많다. 실제적이고 꼼꼼하게 계획적이며 협조적으로 일을 처리한다. 완벽한 결과물을 도출하지 못할 경우 스트레스를 상당히 받으며, 이상과 달리 귀차니즘이 생겼을 시, 자신에게서도 극심한 괴리감을 느낀다. 경험을 통해서 자신이 틀렸다고 인정할 때까지 꾸준히 밀고 나가는 편이다.</p>
+    </div>
+    <div class="mbti3">
+        <h1 id="infj">INFJ</h1>
+        <p>전 세계의 1.5% 미만을 차지하는 극소수의 유형. 인내심이 많고 통찰력과 직관력이 매우 뛰어나며 화합을 추구한다. 창의력이 좋으며, 성숙한 경우엔 강한 직관력으로 타인에게 말없이 영향력을 끼친다. 독창성과 내적 독립심이 강하며, 확고한 신념과 열정으로 자신의 영감을 구현시켜 나가는 정신적 지도자들이 많다. 나무보다 숲을 본다. 한 곳에 몰두하는 경향으로 목적 달성에 필요한 주변적인 조건들을 경시하기 쉽고, 자기 내부의 갈등이 많고 복잡하다. 이들은 풍부하고 감성적인 내적인 성격을 갖고 있다.</p>
+    </div>
+    <div class="mbti4">
+        <h1 id="intj">INTJ</h1>
+        <p>전략가형 사람은 거의 모든 일에 의문을 던지고, 더 좋은 방법을 찾는 과정에서 거절당하거나 규칙을 깨는 일을 두려워하지 않는다. 또 단지 창의적인 데에서 그치지 않고 성취해내기를 원해, 새로운 아이디어에 통찰력과 뛰어난 논리력, 강한 의지를 더해 일을 추진한다.
+        이런 유형은 매우 독립적인 성향을 지녀 혼자 일하거나 결정내리는 것을 선호한다. 그렇기에 타인에게 무심하다는 편견을 받기도 하지만, 이들은 자신이 틀렸거나 타인을 다치게 했다고 생각하면 큰 영향을 받고 그 일을 분석하는 데에 몰두한다. 이들은 단지 의사결정에 있어 감정에 치우치지 않을 뿐 인간적이다</p>
+    </div>
+    <div class="mbti5">
+        <h1 id="istp">ISTP</h1>
+        <p>과묵하며 절제된 호기심으로 인생을 관찰하고, 상황을 파악하는 민감성과 도구를 다루는 뛰어난 능력이 있다. 말수가 적으며, 객관적이고 합리적으로 인생을 관찰하는 유형이다. 인식형(P) 중에서는 판단(J) 성향이 가장 강하거나 판단(J)형과 인식(P)형이 반반으로 나오는 경우가 다소 있다. 필요 이상으로 자신을 발휘하지 않으며, 일과 관계되지 않는 이상 어떤 상황이나 인간관계에 직접 뛰어들지 않는다. 가능한 에너지 소비를 하지 않으려 하며, 사실적 자료를 정리, 조직하기를 좋아하는 경향이 있으며 인과관계나 객관적 원리에 관심이 많다. 3차 기능인 Ni(내향 직관)으로 눈치가 빠르며, 조용히 자기 일만 하고 있는 것처럼 보이지만 사실 주변 상황파악도 다 하고 있다. 4차기능은 Fe(외향 감정)로 타인에게 공감을 잘 못하는 경향이 있다.[</p>
+    </div>
+    <div class="mbti6">
+        <h1 id="isfp">ISFP</h1>
+        <p>말없이 다정하고 온화하며 사람들에게 친절하고 상대방을 잘 알게 될 때까지 내면의 모습이 잘 보이지 않는다. 의견 충돌을 피하고, 인화를 중시한다. 인간과 관계되는 일을 할 때 자신의 감정과 타인의 감정에 지나치게 세심하고 민감한 경향이 있다. 이들은 결정력과 추진력을 기를 필요가 있을 것이다. 3차 기능인 Ni(내향 직관)으로 눈치가 빠르며, 조용히 자기 일만 하고 있는 것처럼 보이지만 사실 주변 상황파악도 다 하고 있다. 경험을 통해서 부기능 Se(외향 감각)과 함께 주기능 Fi(내향 감정)인 자신의 내면을 보호하는 데에 잘 사용할 수 있다.
+        사람 간의 화합을 중시하며 충돌을 회피하는 성향으로 인해 타인과의 갈등이 심화되었을 경우 문제를 해결하려고 하기보다 상대방과의 관계를 끊을 수 있다. 이는 인간관계에서 큰 스트레스를 받는 ISFP의 특성 중 하나이다.</p>
+    </div>  
+    <div class="mbti7">
+        <h1 id="infp">INFP</h1>
+        <p>인간 본연에 대한 애정으로 사람들의 장점을 발견하고, 이들의 가능성을 성취할 수 있도록 도우며, 세상을 더 나은 곳으로 만든다. 하지만 대그룹에 있을 경우 그들의 에너지가 쉽게 고갈되는 경향이 있고, 그들이 엄선한 친밀도가 높은 소수의 사람들과 상호작용 하는 것을 선호한다. 혼자 있기를 좋아하는 개인적인 성향도 있지만, 수줍음과 혼동되어서는 안되며 혼자 시간을 보내는 것으로부터 에너지를 얻는다는 것을 의미한다.
+    </div>  
+    <div class="mbti8">
+        <h1 id="intp">INTP</h1>
+        <p>원론적이고 근본적인 분야에 흥미가 많고 그에 대한 호불호도 뚜렷하다. 또한,비합리적인 규칙과 비효율적인 체계에 거부감을 느낀다. 효율을 중시해 시간 낭비를 좋아하지 않는 것이다. 경직된 사회에 염증을 느끼지만 주변 사람들을 생각해서 자신을 숨기고 따르는 편이다. 소위 꼰대들과 가장 맞지 않는 유형이다. 더 나아지고자, 언제나 나은 방법을 찾고자 하며 발전하고자 하는 욕망이 기본적으로 크다.INTP는 논리와 분석 위주로 사고하는 경향이 있기 때문에 타고난 공감 능력은 다른 MBTI 유형에 비해 상대적으로 매우 떨어진다.</p>
+    </div>  
+    <div class="mbti9">
+        <h1 id="extp">ESTP</h1>
+        <p>사실적이고 관대하며 개방적이고 사람이나 사물에 대한 선입견이 별로 없다. 강한 현실 감각으로 타협책을 모색하고 문제를 해결하는 능력이 뛰어나다. 센스 있고 유머러스하다. 어디서든 적응을 잘 하고 친구와 어울리기를 좋아한다.
+        긴 설명을 싫어하고 운동, 음식 등 주로 오감으로 보고 듣고 만질 수 있는 삶의 모든 것을 즐기는 유형이다. 순발력이 뛰어나며 많은 사실들을 쉽게 기억하고, 예술적인 멋과 판단력을 갖고 있으며, 연장이나 재료들을 다루는 데 능숙하다. 논리, 분석적으로 일을 처리하는 데 반해, 추상적인 아이디어나 개념에 대해서는 별로 흥미가 없다. 즉, 현실적이고 실용적인 면에서 분석적인 자세를 보인다.</p>
+    </div>  
+    <div class="mbti10">
+        <h1 id="esfp">ESFP</h1>
+        <p>사교적이고 활동적이며 수용력이 강하고 친절하며 낙천적이다. 어떤 상황이든 잘 적응하며 현실적이고 실제적이다. 주위의 사람이나 일어나는 일에 대하여 관심이 많으며 사람이나 사물을 다루는 사실적인 상식이 풍부하다. 때로는 수다스럽고, 진지함이 결여되거나 마무리를 등한시하는 경향이 있으나, 어떤 조직체나 공동체에서 밝고 재미있는 분위기 조성 역할을 잘한다.</p>
+    </div>  
+    <div class="mbti11">
+        <h1 id="enfp">ENFP</h1>
+        <p>정열적이고 활기가 넘치며 상상력이 풍부하다. 온정적이고 창의적이며 항상 새로운 가능성을 찾고 시도하는 유형이다. 문제 해결에 재빠르고 관심이 있는 일은 수행해내는 능력과 열성이 있다. 반복되는 일상적인 일을 참지 못하고 열성이 나지 않는다. 또한 한 가지 일을 끝내기도 전에 몇 가지 다른 일을 또 벌이는 경향을 가지고 있다. 통찰력과 창의력이 요구되지 않는 일에는 흥미를 느끼지 못하고 열성을 불러일으키지 못한다.
+        건강한 유형은 다른 사람과 관계 형성을 잘하고 분위기메이커 역할을 하나, 불건강할 경우 지나치게 예민하고 감정적이다. 또한 다른 사람의 인정과 관심을 은근히 요구하며 자신을 타인과 끊임없이 비교하고 쉽게 우울해진다.</p>
+    </div>  
+    <div class="mbti12">
+        <h1 id="estp">ESTP</h1>
+        <p>특유의 능글거리면서 경쾌한 성격과 문제의 본질을 파악하고 논리적으로 판단하려는 기질이 있고, 어느곳에서나 적응력이 빠른 성격이다. 본인이 구상하는 바를 실현시키고 싶어하는 기질이 강하며, 여기에 특유의 아웃사이더적인 성격까지 겹쳐 그야말로 혁명가의 기질을 띠고 있다. 모든 분야에 있어서, 기존의 체제 자체를 뒤집어 버리거나 분야 전체의 도약을 이루어내는 인물들이 많다.
+        위풍당당하고 논리적인 언행, 당차고 경쾌하며 소신있는 성격, 엉뚱한 모습과 자신감 넘치는 태도, 최상위권의 지능을 활용한 아이디어 및 임기응변, 위트있는 말 등으로 인해 주변에서 인기가 많고 분위기를 당당하게 주도하며 강강약약 스타일이 된다.</p>
+    </div>  
+    <div class="mbti13">
+        <h1 id="estj">ESTJ</h1>
+        <p>현실적, 구체적, 사실적이며 어떠한 활동을 조직화하고 주도해 나가는 지도력이 있다. 실질적이고 현실 감각이 뛰어나며 일을 조직하고 계획하여 추진시키는 능력이 있다. 행정, 의료, 법조, 군대, 경찰, 재무, 특히나 모든 것을 망라한 한 단어로 '조직관리' 분야에 뛰어난 재능을 지녔으며, 체계적으로 사업체나 조직체를 이끌어 나간다. 타고난 지도자로서 프로젝트의 목표를 설정하고, 지시하고, 결정하고, 독려하여 기한 내에 철저히 이행하는 능력이 있다. 불확실한 미래의 가능성보다 흔들리지 않는 현재의 사실을 추구하기 때문에 현실중심적, 실용적이다. 하지만 타인과 자신의 감정을 고려하는 능력이 부족할 수 있기 때문에 속단속결, 업무 위주로 사람을 대하는 경향성을 보완하기 위해 인간 중심의 가치에 대해 고민하고 타인의 감정을 고려해야 한다</p>
+    </div>  
+    <div class="mbti14">
+        <h1 id="esfj">ESFJ</h1>
+        <p>ESFJ는 동정심이 많고 다른 사람에게 관심을 쏟으며 나눔과 베풂을 중시한다. 타고난 협력자로서 동료애가 많고 친절하며 능동적인 구성원이다. 이야기 하기를 즐기며 정리정돈을 잘하고, 참을성이 많고 다른 사람들을 잘 도와준다. 사람을 다루고 행동을 요구하는 분야, 예를 들면 교직, 성직, 판매 특히 동정심을 필요로 하는 간호나 의료 분야에 적합하다. 일이나 사람 관련 문제에 대하여 냉철한 입장을 취하기 어려워한다. 반대 의견에 부딪혔을 때나, 자신의 요구가 거절당했을 때 마음의 상처를 받는다.</p>
+    </div>  
+    <div class="mbti15">
+        <h1 id="enfj">ENFJ</h1>
+        <p>온화하고 적극적이며 책임감이 강하고 사교성이 풍부하고 동정심이 많다. 상당히 이타적이고 민첩하고 인화를 중요시하며 참을성이 많다. 다른 사람들의 생각이나 의견에 진지한 관심을 가지고 공동선을 위하여 다른 사람의 의견에 대체로 동의한다. 미래의 가능성을 추구하며 편안하고 능란하게 계획을 제시하고 집단을 이끌어가는 능력이 있다. 성격 유형 검사(MBTI, 16 Personalities, TRUITY 등)에서 통용되는 16가지 유형 중 ENFJ 유형은 전 세계 인구의 2.5% 정도로 희귀한 유형이며, 대한민국에서도 3.5% 미만으로 보기 드문 유형이다.</p>
+    </div>  
+    <div class="mbti16">
+        <h1 id="entj">ENTJ</h1>
+        <p>‘타고난 리더’라고 불리는 이 유형은 권위와 자신감으로 재능을 구현하고, 공통된 목표 뒤에서 사람들을 끌어모으는 통솔력을 행사한다. 실제로 문제 해결 과정을 조직하는 관리자 혹은 지도자가 소속 집단 내 자신의 역할이라고 생각한다. 주로 목표를 달성하기 위해 장기적인 계획 개발을 즐긴다.
+        분석적이고 객관적이며, 주변 세계에 자기 질서를 부여하는 것을 좋아한다. 체계 질서의 결함이나 비효율성을 빠르게 파악하고 더 나은 새로운 해결책을 개념화한다. 나아가 해결책 찾는 데 그치지 않고 기필코 구현해내는 과정을 즐긴다. 그래서인지 리더 역량 중에서도 ‘변화’를 구상하고 조직하는 일에 특출난 편이다.</p>
+    </div>  
+</body>
+</html>

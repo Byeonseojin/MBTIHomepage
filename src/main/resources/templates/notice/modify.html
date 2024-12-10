@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+  .centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .form-container {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    padding: 20px;
+    background-color: rgba(255, 214, 230, 0.32);
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+  .btn-modify {
+    margin-left: 20px;
+    background-color: pink !important;
+    border-color: pink !important;
+    color: white !important;
+  }
+  .btn-list {
+    margin-right: 50px !important;
+    background-color: white !important;
+    border-color: white !important;
+    color: pink !important;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* 좌우 배치 */
+  }
+  .button-group-left, .button-group-right {
+    display: flex;
+  }
+</style>
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+  <th:block th:fragment="content">
+    <div class="centered-container">
+      <div class="form-container">
+        <h1 class="mt-4 text-center">Modify Page</h1>
+        <form action="/notice/modify" method="post">
+          <input type="hidden" name="page" th:value="${requestDTO.page}">
+          <input type="hidden" name="type" th:value="${requestDTO.type}">
+          <input type="hidden" name="keyword" th:value="${requestDTO.keyword}">
+          <div class="form-group">
+            <label>NO</label>
+            <input type="text" name="bno" class="form-control" th:value="${dto.bno}" readonly>
+          </div>
+          <div class="form-group">
+            <label>제목</label>
+            <input type="text" name="title" class="form-control" th:value="${dto.title}">
+          </div>
+          <div class="form-group">
+            <label>내용</label>
+            <textarea name="content" class="form-control" rows="5">[[${dto.content}]]</textarea>
+          </div>
+          <div class="form-group">
+            <label>작성자</label>
+            <input type="text" name="writer" class="form-control" th:value="${dto.writerName}" readonly>
+          </div>
+          <div class="form-group">
+            <label>작성시간</label>
+            <input type="text" name="regDate" class="form-control" th:value="${dto.regDate}" readonly>
+          </div>
+          <div class="form-group">
+            <label>수정시간</label>
+            <input type="text" name="modDate" class="form-control" th:value="${dto.ModDate}" readonly>
+          </div>
+        </form>
+        <div class="button-container">
+          <div class="button-group-left">
+            <button type="button" class="btn btn-primary modifyBtn btn-modify">수정</button>
+            <button type="button" class="btn btn-danger removeBtn">삭제</button>
+          </div>
+          <div class="button-group-right">
+            <button type="button" class="btn btn-info form-group listBtn btn-list">목록</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+</th:block>
+<script th:inline="javascript">
+  let actionFrom = $("form");
+
+  $(".removeBtn").click(function () {
+    if (confirm("정말 삭제하시겠습니까?")) {
+      actionFrom.attr("action", "/notice/remove")
+              .attr("method", "post")
+              .submit();
+    }
+  });
+
+  $(".modifyBtn").click(function () {
+    actionFrom.attr("action","/notice/modify")
+            .attr("method", "post")
+            .submit();
+  });
+
+  $(".listBtn").click(function () {
+    var page = $("input[name='page']");
+    var type = $("input[name='type']");
+    var keyword = $("input[name='keyword']");
+
+    actionFrom.empty();
+    actionFrom.append(page);
+    actionFrom.append(type);
+    actionFrom.append(keyword);
+    actionFrom.attr("action","/notice/list")
+            .attr("method", "get")
+            .submit();
+  });
+</script>
+</html>
